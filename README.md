@@ -13,7 +13,7 @@ When your changes are complete, commit them to a clone of this repository, and t
 
 ## Publication
 
-Changes to the org-stable branch are published directly to the public copy of the manual on phpList.org. This process takes place within a few minutes of a merge into that branch.
+Changes to the master branch are published directly to the public copy of the manual on phpList.org. This process takes place within a few minutes of a merge into that branch.
 
 ## Other manual formats
 
