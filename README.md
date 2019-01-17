@@ -9,7 +9,7 @@ The manual consists of flat xhtml files which can be edited in any text or code 
 
 It is recommended to view this manual locally, for example via a simple local webserver, to check how they render in a Web browser before committing.
 
-When your changes are complete, commit them to a clone of this repository, and then open a merge request to the org-stable branch. 🎉 Thank you for your improvements 🎉
+When your changes are complete, commit them to a clone of this repository, and then open a merge request to the master branch. 🎉 Thank you for your improvements 🎉
 
 ## Publication
 
