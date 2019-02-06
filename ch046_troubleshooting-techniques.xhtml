@@ -12,6 +12,19 @@
 <p>One of the biggest barriers to problem solving is being able to describe the problem clearly and in enough detail. There is a useful article <a href="http://community.phpList.com/how-to-get-help-on-the-forums/">here</a> to help you with that - it's especially worth a read if you are "not very technical".</p>
 
 <h2>Enable error reporting</h2>
+
+<h3>Verbose phpList logging</h3>
+
+<p>You can tell phpList to log more information about all its behaviour by enabling <a href="https://resources.phplist.com/system/config/verbose">verbose mode</a> in your config.php file:</p>
+
+<blockquote><code>
+define('VERBOSE', true);
+</code></blockquote>
+
+<p>Then check the following page for logged events, such as generating messages for sending: System -> Log of Events.</p>
+
+<h3>PHP Error reporting</h3>
+
 <p>By default phpList has error reporting disabled. This behaviour will even suppress errors and exceptions from appearing in your web server's logs.</p>
 
 <p>To enable error reporting, change:</p>
