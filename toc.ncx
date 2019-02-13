@@ -189,6 +189,12 @@
         </navLabel>
         <content src="ch028_installation.xhtml"/>
       </navPoint>
+      <navPoint id="chapter34" playOrder="25">
+        <navLabel>
+          <text>Upgrading using Automatic Updater</text>
+        </navLabel>
+        <content src="ch034_upgrade_using_automatic_updater.xhtml"/>
+      </navPoint>
       <navPoint id="chapter29" playOrder="25">
         <navLabel>
           <text>Installing using an auto-installer</text>
