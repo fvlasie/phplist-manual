@@ -1,114 +1,80 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
-"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"><head><title/></head><body>
-
-  <h1 id="automaticupdaterforphplist">Automatic updater for phpList</h1>
-
-  <p>Provides an easy, automated, web-based update mechanism for phpList installations.</p>
-
-  <h2 id="usage">Usage</h2>
-
-  <p>The phpList updater gives you an easy way to upgrade your installation via web interface. In just four steps you can update your installation to the latest release. </p>
-
-  <p>The Updater is available in phpList 3.3.7+. </p>
-
-  <h2 id="requirements">Requirements</h2>
-
-  <p>The automatic updater requires the following PHP extensions: curl, zip and pdo.</p>
-
-  <h2 id="technicaldetails">Steps</h2>
-
-  <p> You have to be a superadmin in order to update phpList via Automatic Updater.
+        "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title/></head><body><h1>Automatic updater for phpList
+</h1>
+<p>Provides an easy, automated, web-based update mechanism for phpList installations.</p>
+<h2 id="usage">Usage</h2>
+<p>The phpList updater gives you an easy way to upgrade your installation via web interface. In just four steps you can update your installation to the latest release. </p>
+<p>The Updater is available in phpList 3.3.7+. </p>
+<h2 id="requirements">Requirements</h2>
+<p>The automatic updater requires the following PHP extensions: curl, zip and pdo.</p>
+<h2 id="technicaldetails">Steps</h2>
+<p> You have to be a superadmin in order to update phpList via Automatic Updater.
     The updater is currently performing the following steps. If one of those steps fail, you will have the possibility to correct the error and retry from the current step.</p>
-    <h3>Initialise</h3>
-    <p>On the first step, several checks are performed such as if there is an update available, integration check and permissions check.</p>
-      <img alt="Automatic Updater Update Available" src="static/phpList_automatic_updater_update_available.png" height="380" width="720"/>&#160;
-    <ol>
-      <li>Check if there is an update available. If there is an Update Available you can continue to the next step. </li>
-      <li>Check for write permissions. All phpList should be writable by the apache HTTP user in order for the automatic updater to work.
+<h3>Initialise</h3>
+<p>On the first step, several checks are performed such as if there is an update available, integration check and permissions check.</p>
+<p><img alt="Automatic Updater Update Available" src="static/phpList_automatic_updater_update_available.png" height="380" width="720"/></p>
+<ol>
+    <li>Check if there is an update available. If there is an Update Available you can continue to the next step. </li>
+    <li>Check for write permissions. All phpList should be writable by the apache HTTP user in order for the automatic updater to work.
         The updater stops if it finds not writable files and lists them. To continue, change file permissions for listed ones and click next to try again.
-      </li>
-      <li>Integration check. Check whether all required phpList files are in place and also if unexpected files are present.
+    </li>
+    <li>Integration check. Check whether all required phpList files are in place and also if unexpected files are present.
         The updater stops if it finds unexpected files (not from phpList default installation) and lists them. .
-      </li>
-      <h3>Back up</h3>
-      <p>The user is asked whether they want a backup of the software. Please note that this is not a database back up. Back up is recommended for users that might have changed phpList files.
-      </p>
-    </ol>
-    <ul>
-      <li>If you don't need to back up the software, please choose "No" and you will continue to the next step.</li>
-      <img alt="Automatic Updater back up" src="static/phpList_automatic_updater_no_back_up.png" height="380" width="720"/>&#160;
-      <li>If you choose yes: the user is asked for the location where to store the zip file of the phpList software.
-        The back up will be saved in the specified location. Please note that the specified location should be writable.
-        If you see any error, please make the requested changes and click "Next" without refreshing the page.
-        If the back up step fails, a manual backup of the files is recommended.
-      </li>
-      <img alt="Automatic Updater back up" src="static/phpList_automatic_updater_yes_back_option.png" height="380" width="750"/>&#160;
-    </ul>
-    <h3>Download</h3>
-      <p>The new version is downloaded to a temporary folder. Please wait until the download is finished.</p>
-      <img alt="Automatic Updater Download" src="static/phpList_automatic_updater_download_in_progress.png" height="380" width="740"/>&#160;
-    <h3>Perform update</h3>
-    <p>This is the last phase and several steps are performed in background without user interaction as listed below:</p>
-    <ol>
-      <li>The maintenance mode is enabled so that no other actions are performed while running the automatic updater.</li>
+    </li>
+</ol>
+<h3>Back up</h3>
+<p>The user is asked whether they want a backup of the software. Please note that this is not a database back up. Back up is recommended for users that might have changed phpList files.
+</p>
+<p>If you don't need to back up the software, please choose "No" and you will continue to the next step.</p>
+<p><img alt="Automatic Updater back up" src="static/phpList_automatic_updater_yes_back_option.png" height="380" width="750"/></p>
+<p>If you choose yes: the user is asked for the location where to store the zip file of the phpList software.
+    The back up will be saved in the specified location. Please note that the specified location should be writable.
+    If you see any error, please make the requested changes and click "Next" without refreshing the page.
+    If the back up step fails, a manual backup of the files is recommended.</p>
+<p> <img alt="Automatic Updater back up" src="static/phpList_automatic_updater_no_back_up.png" height="380" width="720"/> </p>
+<h3>Download</h3>
+<p>The new version is downloaded to a temporary folder. Please wait until the download is finished.</p>
+<p><img alt="Automatic Updater Download" src="static/phpList_automatic_updater_download_in_progress.png" height="380" width="740"/></p>
+<h3>Perform update</h3>
+<p>This is the last phase and several steps are performed in background without user interaction as listed below:</p>
+<ol>
+    <li>The maintenance mode is enabled so that no other actions are performed while running the automatic updater.</li>
+    <li>The PHP entry points are replaced with "Update in progress" message</li>
+    <li>Old files are deleted except config, updater and temporary directory</li>
+    <li>The new files are moved in place</li>
+    <li>The new PHP entry points are moved in place</li>
+    <li>The updater code is moved to a temporary directory</li>
+    <li>The temporary files are deleted</li>
+    <li>The maintenance mode is disabled</li>
+    <li>The new updater code is moved in place</li>
+    <li>The updated sessions is deauthenticated</li>
+</ol>
+<h3>Done</h3>
+<p>"Updated successfully" is displayed. Redirect to the phpList dashboard by clicking "Next" button or alternatively click on phpList logo.</p>
+<p><img alt="Automatic Updater Download" src="static/phpList_automatic_updater_updated_successfully.png" height="380" width="720"/></p>
+<h2 id="whattheupdaterdoesntdoyet">What the updater doesn't do </h2>
+<p>The updater is at the moment solely focused on replacing the files of the core installation. It does neither:</p>
+<ul>
+    <li>Upgrade the database (this uses the existing database migration code)</li>
+    <li>Upgrade the plugins (this uses the existing plugin updater)</li>
+</ul>
+<h2 id="notes">Notes</h2>
+<ul>
+    <li>Any plugins that are not included in releases are removed and need to reinstalled following update (settings for those plugins in the database are not affected; reinstalling the plugins should make them work as before).</li>
+    <li>It is possible to override the backup checks by reloading the page when the backup check fails. Do not reload the page unless you wish to proceed without a backup in this case.</li>
+    <li>When the update process fails you should manually remove actions.txt file inside the config folder in order to reset the process and be able to try again.</li>
+    <li>The config directory is required to be writable because the "current step" of the automatic updater is saved inside it.</li>
+</ul>
+<h2> Disabling Automatic Updater</h2>
+<p>For admins who run phpList in a controlled environment it is necessary to be able to disable the automatic updater.
+    To disable the automatic updater add the following in your config file:</p>
 
-      <li>The PHP entry points are replaced with "Update in progress" message</li>
-
-      <li>Old files are deleted except config, updater and temporary directory</li>
-
-      <li>The new files are moved in place</li>
-
-      <li>The new PHP entry points are moved in place</li>
-
-      <li>The updater code is moved to a temporary directory</li>
-
-      <li>The temporary files are deleted</li>
-
-      <li>The maintenance mode is disabled</li>
-
-      <li>The new updater code is moved in place</li>
-
-      <li>The updated sessions is deauthenticated</li>
-    </ol>
-    <h3>Done</h3>
-    <p>"Updated successfully" is displayed. Redirect to the phpList dashboard by clicking "Next" button or alternatively click on phpList logo.</p>
-    <img alt="Automatic Updater Download" src="static/phpList_automatic_updater_updated_successfully.png" height="380" width="720"/>&#160;
-    <h2 id="whattheupdaterdoesntdoyet">What the updater doesn't do </h2>
-
-    <p>The updater is at the moment solely focused on replacing the files of the core installation. It does neither:</p>
-
-    <ul>
-
-      <li>Upgrade the database (this uses the existing database migration code)</li>
-
-      <li>Upgrade the plugins (this uses the existing plugin updater)</li>
-
-    </ul>
-
-    <h2 id="notes">Notes</h2>
-    <ul>
-
-      <li>Any plugins that are not included in releases are removed and need to reinstalled following update (settings for those plugins in the database are not affected; reinstalling the plugins should make them work as before).</li>
-
-      <li>It is possible to override the backup checks by reloading the page when the backup check fails. Do not reload the page unless you wish to proceed without a backup in this case.</li>
-
-      <li>When the update process fails you should manually remove actions.txt file inside the config folder in order to reset the process and be able to try again.</li>
-
-      <li>The config directory is required to be writable because the "current step" of the automatic updater is saved inside it.</li>
-    </ul>
-    <h2> Disabling Automatic Updater</h2>
-    For admins who run phpList in a controlled environment it is necessary to be able to disable the automatic updater.
-    To disable the automatic updater add the following in your config file:
-    <br></br>
-    <code>define('ALLOW_UPDATER', false); </code>
-
-    <h2 id="reportbugsandimprovements">Report bugs</h2>
-
-    Please report issues <a href="https://mantis.phplist.org/"> here </a> under automatic updater category.
-    <h2 id="source-code-updater">Source code</h2>
-
-    The source code is available  <a href="https://github.com/phplist/updater/"> here </a>. Feel free to contribute.
-  </body>
-  </html>
+<p><code>define('ALLOW_UPDATER', false); </code></p>
+<h2 id="reportbugsandimprovements">Report bugs</h2>
+<p>Please report issues <a href="https://mantis.phplist.org/"> here </a>under automatic updater category.</p>
+<h2 id="source-code-updater">Source code</h2>
+<p>The source code is available  <a href="https://github.com/phplist/updater/"> here </a>.
+    Feel free to contribute.</p>
+</body></html>
