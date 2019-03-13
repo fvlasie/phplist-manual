@@ -298,7 +298,6 @@
       </navLabel>
       <content src="ch049_api-and-integrations.xhtml"/>
     </navPoint>
-    </navPoint>
     <navPoint id="chapter45" playOrder="39">
       <navLabel>
         <text>Troubleshooting</text>
