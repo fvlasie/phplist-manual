@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title/></head><body>
+    <h1 id="api-and-integrations">API and integrations</h1>
+    <p>phpList is a stand-alone solution which can also be integrated into other systems, workflows, and applications. This can be as simple as automatically adding a sign-up form for a newletter list to your Wordpress blog, or as complex as using phpList as one of many components in a larger automated enterprise resource planning system.</p>
+    <h2>Application Programming Interface (API)</h2>
+    <p>phpList 3.4.0 and later includes a <abbr title="Representational State Transfer">REST</abbr> API which, when enabled, allows other software systems to interact with it in a variety of ways, such as managing subscribers, lists, and campaigns.</p>
+
+    <h3>System requirements</h3>
+    <p>The REST API has different server requirements than phpList 3 &mdash; it may not be compatible with your environment even if you are already using phpList 3 successfully. The most significant difference is the requirement of PHP 7. For the full list of requirements please see the <a href="https://github.com/phpList/base-distribution#phplist-4-base-distribution" target="_blank">System Requirements</a> of phpList 4.</p>
+    <h3>Enable the API</h3>
+    <ul>
+      <li>Open the following file with a text editor: <code>public_html/lists/base/config/config_modules.yml</code></li>
+      <li>Change <code>false</code> to <code>true</code> on the following line: <code>{ view_response_listener: { enabled: false } }</code></li>
+      <li>Delete this folder entirely: <code>public_html/lists/base/cache</code></li>
+    </ul> 
+    <h3>Access the API</h3>
+    <p>By default the base URL for API requests is <code>http://my-website.com/lists/base/public/api/v2/</code>. So, to authenticate a new API session you could use following URL: <code>http://my-website.com/lists/base/public/api/v2/sessions</code>. This access URL can be changed by editing your webserver configuration. Apache users can edit the <code>.htaccess</code> file within the <code>/lists</code> directory.</p>
+    <h3>Enable API logging</h3>
+    <p>The following steps will enable logging of API requests and errors:</p>
+    <ul>
+      <li>Edit the following file: <code>public_html/lists/base/vendor/phplist/core/config/config_prod.yml</code></li>
+      <li>Remove the pound (<code>#</code>) from the beginning of every line from line 4 onwards to uncomment them</li>
+    </ul>
+    <h3>Supported API actions</h3>
+    <p>For complete documentation of all supported REST API actions please see the <a href="https://github.com/phpList/rest-api/blob/master/docs/Api/RestApi.apib" target="_blank">API Blueprint</a>.</p>
+  </body>
+</html>
