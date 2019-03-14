@@ -17,6 +17,12 @@
     </ul> 
     <h3>Access the API</h3>
     <p>By default the base URL for API requests is <code>http://my-website.com/lists/base/public/api/v2/</code>. So, to authenticate a new API session you could use following URL: <code>http://my-website.com/lists/base/public/api/v2/sessions</code>. This access URL can be changed by editing your webserver configuration. Apache users can edit the <code>.htaccess</code> file within the <code>/lists</code> directory.</p>
+    <h3>Test the API</h3>
+    <p>To check if the API is enabled and working properly, you can try authenticating a new session from a Linux or Mac terminal using the <code>curl</code> command-line utility. Substitute the example phpList installation URL, and phpList admin username and password, in the following command, and copy and paste it into your terminal:</p>
+    <p><code>curl --request POST --url http://my-website.com/lists/base/public/api/v2/sessions --header 'Content-Type: application/json' --data '{"login_name": "admin","password": "phplist"}'</code></p>
+    <p>The output should be similar to the following, with different expiry date, key, and id:</p>
+    <p><code>{"expiry":"2019-03-31T18:16:42+00:00","key":"24244871cf45aa2f1c0dbddf82b9912b","id":6}</code></p>
+    <p>If instead you see a message in HTML stating '403 Forbidden', then you should check your webserver's permission configuration, and if using Apache, the .htacces file within <code>lists/</code> and <code>base/</code>.</p>
     <h3>Enable API logging</h3>
     <p>The following steps will enable logging of API requests and errors:</p>
     <ul>
