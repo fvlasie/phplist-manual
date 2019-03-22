@@ -37,11 +37,11 @@
       <a class="heading" href="PhpListConfigSendRate.html#hn_Mailqueue_batch_processing">Mailqueue batch processing</a>
     </h5>
     <p>With batch processing, two primary settings work together to say: Send no more than N emails every T seconds. Where:
-      N is </p>
+      N is
       <code>MAILQUEUE_BATCH_SIZE</code>
       T is 
       <code>MAILQUEUE_BATCH_PERIOD</code>
-    <p>These settings force phpList to "restrain itself" and avoid sending out all messages in one go.</p>
+    These settings force phpList to "restrain itself" and avoid sending out all messages in one go.</p>
 
     <p>So, say you have an hourly limit of 400 emails. Should you set the batch size to 400? No! Why?
       What about other emails, such as confirmation requests, system messages, or emails sent by other applications you might have running on this site?</p>
