@@ -8,12 +8,11 @@
         <p>For this reason most hosting providers will limit the number of emails a single site may send. Either limiting the number of emails per hour or per day. This is their job, to make sure that one person's use doesn't impacts needlessly the other sites on that machine.</p>
 
         <p>Another, perhaps, better reason providers will limit your email resources is that they don't want to host spammers. So, what does this mean to you, a non-spammer? <strong>You must check with your hosting provider before sending your first mailing.</strong>Ask: Is there a daily limit? Is there an hourly limit? Odds are that there is. Then use the following settings in the config.php file to safely live within these limits.</p>
-        <h4 id="hn-Limiting-the-speed-rate">
-          <a class="heading" href="PhpListConfigSendRate.html#hn_Limiting_the_speed_rate">Limiting the speed rate</a>
-        </h4>
-        <p>At full speed phpList (up to version 2.10.5) will send about 3000 personalized messages per hour, or about 5000 non-personalized messages per hour. Given that most shared hosting providers will not allow that message volume to be sent and will impose an hourly or daily limit, phpList offers two methods to deal with these message limits: <em>mailqueue batch</em>processing and <em>mailqueue throttle</em>processing. The choice in using batches or throttling is basically a personal preference, although throttling may be better suited for servers running PHP-cgi (see <a class="" href="PhpInterfacesInfo.html">The three interfaces of PHP</a>).</p> <h5 id="hn-Mailqueue-throttle"> <a class="heading" href="PhpListConfigSendRate.html#hn_Mailqueue_throttle">Mailqueue throttle</a>
-      </h5>
-      <p>The <code>MAILQUEUE_THROTTLE</code>setting inserts a pause (in seconds) between each message, i.e. it will space messages apart by a number of seconds. While you can use this setting to avoid overloading the server with a sudden burst of messages, you can also use it as an alternative to batch processing. For instance, if you impose a pause of 10 seconds between messages, you will in fact send no more than 360 messages per hour.</p>
+        <h4 id="Limiting-the-speed-rate"> Limiting the speed rate </h4>
+        <p>At full speed phpList (up to version 2.10.5) will send about 3000 personalized messages per hour, or about 5000 non-personalized messages per hour. Given that most shared hosting providers will not allow that message volume to be sent and will impose an hourly or daily limit, phpList offers two methods to deal with these message limits: <em>mailqueue batch</em>processing and <em>mailqueue throttle</em>processing. The choice in using batches or throttling is basically a personal preference, although throttling may be better suited for servers running PHP-cgi (see <a class="" href="PhpInterfacesInfo.html">The three interfaces of PHP</a>).</p> 
+
+    <h5 id="Mailqueue-throttle">Mailqueue throttle </h5>
+    <p>The <code>MAILQUEUE_THROTTLE</code>setting inserts a pause (in seconds) between each message, i.e. it will space messages apart by a number of seconds. While you can use this setting to avoid overloading the server with a sudden burst of messages, you can also use it as an alternative to batch processing. For instance, if you impose a pause of 10 seconds between messages, you will in fact send no more than 360 messages per hour.</p>
 
       <p>Example:</p>
 
@@ -28,8 +27,8 @@ define("MAILQUEUE_BATCH_PERIOD",3600);
 define('MAILQUEUE_THROTTLE',10);
     </pre>
 
-    <h5 id="hn-Mailqueue-batch-processing">
-      <a class="heading" href="PhpListConfigSendRate.html#hn_Mailqueue_batch_processing">Mailqueue batch processing</a>
+    <h5 id="Mailqueue-batch-processing">
+      Mailqueue batch processing
     </h5>
     <p>With batch processing, two primary settings work together to say: Send no more than N emails every T seconds. Where:
       N is
@@ -81,13 +80,9 @@ define('MAILQUEUE_THROTTLE',1);
 # define("MAILQUEUE_BATCH_PERIOD",1);
 </pre>
 
-  <h4 id="hn-Relevant-sections-in-config.php">
-    <a class="heading" href="PhpListConfigSendRate.html#hn_Relevant_sections_in_config.php">Relevant sections in config.php</a>
-  </h4>
+  <h4 id="Relevant-sections-in-config.php"> Relevant sections in config.php </h4>
 
-  <h5 id="hn-this-block-in-config.php">
-    <a class="heading" href="PhpListConfigSendRate.html#hn_this_block_in_config.php">this block in config.php</a>
-  </h5>
+  <p>this block in config.php</p>
 
     <pre>
 # batch processing
@@ -134,9 +129,7 @@ define("MAILQUEUE_BATCH_PERIOD",100);
 define('MAILQUEUE_THROTTLE',0);
     </pre>
 
-<h4 id="hn-Experimental-settings-auto-throttle-and-domain-throttle">
-  <a class="heading" href="PhpListConfigSendRate.html#hn_Experimental_settings:_auto_throttle_and_domain_throttle">Experimental settings: auto throttle and domain throttle</a>
-</h4>
+<h4 id="Experimental-settings-auto-throttle-and-domain-throttle">Experimental settings: auto throttle and domain throttle</h4>
 
     <pre>
  # Mailqueue autothrottle. This will try to automatically change the delay
@@ -162,9 +155,7 @@ define('DOMAIN_BATCH_SIZE',1);
 define('DOMAIN_BATCH_PERIOD',120);
     </pre>
 
-<h4 id="hn-Tips-tricks-from-the-forum">
-  <a class="heading" href="PhpListConfigSendRate.html#hn_Tips_tricks_from_the_forum">Tips &amp; tricks from the forum</a>
-</h4>
+<h4 id="Tips-tricks-from-the-forum">Tips &amp; tricks from the forum</h4>
 <ul>
   <li>
     <a class="ext" href="http://forums.phplist.com/viewtopic.php?p=11182#11182">Fractional values in throttle setting</a>
