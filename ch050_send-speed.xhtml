@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title />
+  </head>
+  <body>
+        <h2 id="Setting-the-Send-Speed-Rate">Setting the Send Speed (Rate)</h2>
+        <p>Many people are running phpList on hosted servers they do not own or manage. These are usually shared boxes: that is, one computer has lots of web sites on it. This means that if one web site attempts to dominate the CPU or otherwise behave in a non-community-minded, limited resource way, everyone suffers.</p>
+
+        <p>For this reason most hosting providers will limit the number of emails a single site may send. Either limiting the number of emails per hour or per day. This is their job, to make sure that one person's use doesn't impacts needlessly the other sites on that machine.</p>
+
+        <p>Another, perhaps, better reason providers will limit your email resources is that they don't want to host spammers. So, what does this mean to you, a non-spammer? <strong>You must check with your hosting provider before sending your first mailing.</strong>Ask: Is there a daily limit? Is there an hourly limit? Odds are that there is. Then use the following settings in the config.php file to safely live within these limits.</p>
+        <h4 id="hn-Limiting-the-speed-rate">
+          <a class="heading" href="PhpListConfigSendRate.html#hn_Limiting_the_speed_rate">Limiting the speed rate</a>
+        </h4>
+        <p>At full speed phpList (up to version 2.10.5) will send about 3000 personalized messages per hour, or about 5000 non-personalized messages per hour. Given that most shared hosting providers will not allow that message volume to be sent and will impose an hourly or daily limit, phpList offers two methods to deal with these message limits: <em>mailqueue batch</em>processing and <em>mailqueue throttle</em>processing. The choice in using batches or throttling is basically a personal preference, although throttling may be better suited for servers running PHP-cgi (see <a class="" href="PhpInterfacesInfo.html">The three interfaces of PHP</a>).</p> <h5 id="hn-Mailqueue-throttle"> <a class="heading" href="PhpListConfigSendRate.html#hn_Mailqueue_throttle">Mailqueue throttle</a>
+      </h5>
+      <p>The <tt>MAILQUEUE_THROTTLE</tt>setting inserts a pause (in seconds) between each message, i.e. it will space messages apart by a number of seconds. While you can use this setting to avoid overloading the server with a sudden burst of messages, you can also use it as an alternative to batch processing. For instance, if you impose a pause of 10 seconds between messages, you will in fact send no more than 360 messages per hour.</p>
+
+      <p>Example:</p>
+
+      <!--start GeSHi-->
+      <div class="code" style="font-family: monospace;">
+        <span class="co2"># batch processing disabled:</span>
+
+        <a href="http://www.php.net/define">
+          <span class="kw3">define</span>
+        </a>
+        <span class="br0">(</span>
+        <span class="st0">"MAILQUEUE_BATCH_SIZE"</span>,
+        <span class="nu0">0</span>
+        <span class="br0">)</span>;
+
+
+        <span class="co2"># Batch_period is not effective when batch processing is disabled:</span>
+
+        <a href="http://www.php.net/define">
+          <span class="kw3">define</span>
+        </a>
+        <span class="br0">(</span>
+        <span class="st0">"MAILQUEUE_BATCH_PERIOD"</span>,
+        <span class="nu0">3600</span>
+        <span class="br0">)</span>;
+
+
+        <span class="co2"># Pause between messages (in seconds) to send no more than 360 messages per hour:</span>
+
+        <a href="http://www.php.net/define">
+          <span class="kw3">define</span>
+        </a>
+        <span class="br0">(</span>
+        <span class="st0">'MAILQUEUE_THROTTLE'</span>,
+        <span class="nu0">10</span>
+        <span class="br0">)</span>;</div>
+      <!--end GeSHi-->
+
+    <h5 id="hn-Mailqueue-batch-processing">
+      <a class="heading" href="PhpListConfigSendRate.html#hn_Mailqueue_batch_processing">Mailqueue batch processing</a>
+    </h5>
+    <p>With batch processing, two primary settings work together to say: Send no more than N emails every T seconds. Where:
+      N is </p>
+      <tt>MAILQUEUE_BATCH_SIZE</tt>
+      T is 
+      <tt>MAILQUEUE_BATCH_PERIOD</tt>
+    <p>These settings force phpList to "restrain itself" and avoid sending out all messages in one go.</p>
+
+    <p>So, say you have an hourly limit of 400 emails. Should you set the batch size to 400? No! Why?
+      What about other emails, such as confirmation requests, system messages, or emails sent by other applications you might have running on this site?</p>
+
+    <p>No, you want to back away from that "400", which is a best case scenario. Instead give yourself some safe breathing room. For example, if you get 24 new sign-ups a day then you should subtract 5 or so to be safe, thus 395. Running other software that sends notifications? back it down. A comfortable number for a small installation would be 20-40 down from your hourly limit.</p>
+
+    <p>Example:</p>
+
+<code>
+# Send a batch of 360 messages per batch period:
+define("MAILQUEUE_BATCH_SIZE",360);
+
+# batch period is set to 3600 seconds (=1 hour):
+define("MAILQUEUE_BATCH_PERIOD",3600);
+
+# Pause between messages (in seconds) to avoid overloading the server:
+define('MAILQUEUE_THROTTLE',1);
+</code>
+
+
+    <p>If your server is running PHP-cgi, you may have issues with timeouts (see 
+      <a class="" href="PhpInterfacesInfo.html">The three interfaces op PHP</a>). In that case you could try a shorter batch period of for instance 10 minutes.</p>
+
+    <p>Example:</p>
+
+<code>
+# Send a batch of 60 messages per batch period:
+define("MAILQUEUE_BATCH_SIZE",60);
+
+# batch period is set to 600 seconds (= 10 minutes):
+define("MAILQUEUE_BATCH_PERIOD",600);
+
+# Pause between messages (in seconds) to avoid overloading the server:
+define('MAILQUEUE_THROTTLE',1);
+</code>
+
+    <p>If you are manually processing the message queue -i.e. by using your browser- you may want to consider settings that use a small batches and a short batch period, like this one which will send 10 messages and then reload the browser to send the next 10. However, this will not restrict the sending to any limits, so there's a good chance you will go over the limits of your ISP.</p>
+
+    <p>Example:</p>
+
+<code>
+# define("MAILQUEUE_BATCH_SIZE",10);
+# define("MAILQUEUE_BATCH_PERIOD",1);
+</code>
+
+  <h4 id="hn-Relevant-sections-in-config.php">
+    <a class="heading" href="PhpListConfigSendRate.html#hn_Relevant_sections_in_config.php">Relevant sections in config.php</a>
+  </h4>
+
+  <h5 id="hn-this-block-in-config.php">
+    <a class="heading" href="PhpListConfigSendRate.html#hn_this_block_in_config.php">this block in config.php</a>
+  </h5>
+  <!--start GeSHi-->
+  <code>
+# batch processing
+# batch processing
+# if you are on a shared host, it will probably be appreciated if you don't send
+# out loads of emails in one go. To do this, you can configure batch processing.
+# Please note, the following two values can be overridden by your ISP by using
+# a server wide configuration. So if you notice these values to be different
+# in reality, that may be the case
+
+## if you send the queue using your browser, you may want to consider settings like this
+## which will send 10 messages and then reload the browser to send the next 10. However, this
+## will not restrict the sending to any limits, so there's a good chance you will
+## go over the limits of your ISP
+# define("MAILQUEUE_BATCH_SIZE",10);
+# define("MAILQUEUE_BATCH_PERIOD",1);
+
+## if you send the queue using commandline, you can set it to something that complies with the
+## limits of your ISP, eg 300 messages an hour would be
+# define("MAILQUEUE_BATCH_SIZE",300);
+# define("MAILQUEUE_BATCH_PERIOD",3600);
+# and then you need to set the cron to run every 5 minutes
+
+# define the amount of emails you want to send per period. If 0, batch processing
+# is disabled and messages are sent out as fast as possible
+define("MAILQUEUE_BATCH_SIZE",0);
+
+# define the length of one batch processing period, in seconds (3600 is an hour)
+# Please note: this setting has two consequences:
+# 1. it will enforce that the amount of emails sent in the period identified here does not exceed the amount
+#  set in MAILQUEUE_BATCH_SIZE
+# 2. there will be a delay of MAILQUEUE_BATCH_PERIOD when running the queue.
+#
+# number 1 is mostly when using commandline queue processing (strongly recommended)
+# number 2 is when using browser queue processing. The browser will reload to send the next
+# batch after the amount of seconds set here
+
+define("MAILQUEUE_BATCH_PERIOD",100);
+
+# to avoid overloading the server that sends your email, you can add a little delay
+# between messages that will spread the load of sending
+# you will need to find a good value for your own server
+# value is in seconds (or you can play with the autothrottle below)
+define('MAILQUEUE_THROTTLE',0);
+  </code>
+  <!--end GeSHi-->
+
+<h4 id="hn-Experimental-settings-auto-throttle-and-domain-throttle">
+  <a class="heading" href="PhpListConfigSendRate.html#hn_Experimental_settings:_auto_throttle_and_domain_throttle">Experimental settings: auto throttle and domain throttle</a>
+</h4>
+
+<code>
+ # Mailqueue autothrottle. This will try to automatically change the delay
+# between messages to make sure that the MAILQUEUE_BATCH_SIZE (above) is spread evently over
+# MAILQUEUE_BATCH_PERIOD, instead of firing the Batch in the first few minutes of the period
+# and then waiting for the next period. This only works with mailqueue_throttle off
+# it still needs tweaking, so send your feedback to mantis.tincan.co.uk if you find
+# any issues with it
+define('MAILQUEUE_AUTOTHROTTLE',0);
+
+# Domain Throttling
+# You can activate domain throttling, by setting USE_DOMAIN_THROTTLE to 1
+# define the maximum amount of emails you want to allow sending to any domain and the number
+# of seconds for that amount. This will make sure you don't send too many emails to one domain
+# which may cause blacklisting. Particularly the big ones are tricky about this.
+# it may cause a dramatic increase in the amount of time to send a message, depending on how
+# many users you have that have the same domain (eg hotmail.com)
+# if too many failures for throttling occur, the send process will automatically add an extra
+# delay to try to improve that. The example sends 1 message every 2 minutes.
+
+define('USE_DOMAIN_THROTTLE',0);
+define('DOMAIN_BATCH_SIZE',1);
+define('DOMAIN_BATCH_PERIOD',120);
+</code>
+
+<h4 id="hn-Tips-tricks-from-the-forum">
+  <a class="heading" href="PhpListConfigSendRate.html#hn_Tips_tricks_from_the_forum">Tips &amp; tricks from the forum</a>
+</h4>
+<ul>
+  <li>
+    <a class="ext" href="http://forums.phplist.com/viewtopic.php?p=11182#11182">Fractional values in throttle setting</a>
+  </li>
+  <li>
+    <a class="ext" href="http://forums.phplist.com/viewtopic.php?p=11369#11369">Throttled Sending Instead of Batches</a>
+  </li>
+</ul>
+
+</body>
+</html>
