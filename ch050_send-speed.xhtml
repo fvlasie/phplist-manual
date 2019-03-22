@@ -2,7 +2,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
     "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"><head><title/></head><body>
-        <h2 id="Setting-the-Send-Speed-Rate">Setting the Send Speed (Rate)</h2>
+        <h1 id="Setting-the-Send-Speed-Rate">Setting the Send Speed (Rate)</h1>
         <p>Many people are running phpList on hosted servers they do not own or manage. These are usually shared boxes: that is, one computer has lots of web sites on it. This means that if one web site attempts to dominate the CPU or otherwise behave in a non-community-minded, limited resource way, everyone suffers.</p>
 
         <p>For this reason most hosting providers will limit the number of emails a single site may send. Either limiting the number of emails per hour or per day. This is their job, to make sure that one person's use doesn't impacts needlessly the other sites on that machine.</p>
@@ -18,15 +18,15 @@
       <p>Example:</p>
 
     <pre>
-    Example:
-    # batch processing disabled:
-    define("MAILQUEUE_BATCH_SIZE",0);
+Example:
+# batch processing disabled:
+define("MAILQUEUE_BATCH_SIZE",0);
 
-    # Batch_period is not effective when batch processing is disabled:
-    define("MAILQUEUE_BATCH_PERIOD",3600);
+# Batch_period is not effective when batch processing is disabled:
+define("MAILQUEUE_BATCH_PERIOD",3600);
 
-    # Pause between messages (in seconds) to send no more than 360 messages per hour:
-    define('MAILQUEUE_THROTTLE',10);
+# Pause between messages (in seconds) to send no more than 360 messages per hour:
+define('MAILQUEUE_THROTTLE',10);
     </pre>
 
     <h5 id="hn-Mailqueue-batch-processing">
@@ -47,14 +47,14 @@
     <p>Example:</p>
 
     <pre>
-    # Send a batch of 360 messages per batch period:
-    define("MAILQUEUE_BATCH_SIZE",360);
+# Send a batch of 360 messages per batch period:
+define("MAILQUEUE_BATCH_SIZE",360);
 
-    # batch period is set to 3600 seconds (=1 hour):
-    define("MAILQUEUE_BATCH_PERIOD",3600);
+# batch period is set to 3600 seconds (=1 hour):
+define("MAILQUEUE_BATCH_PERIOD",3600);
 
-    # Pause between messages (in seconds) to avoid overloading the server:
-    define('MAILQUEUE_THROTTLE',1);
+# Pause between messages (in seconds) to avoid overloading the server:
+define('MAILQUEUE_THROTTLE',1);
     </pre>
 
     <p>If your server is running PHP-cgi, you may have issues with timeouts (see 
@@ -63,14 +63,14 @@
     <p>Example:</p>
 
     <pre>
-    # Send a batch of 60 messages per batch period:
-    define("MAILQUEUE_BATCH_SIZE",60);
+# Send a batch of 60 messages per batch period:
+define("MAILQUEUE_BATCH_SIZE",60);
 
-    # batch period is set to 600 seconds (= 10 minutes):
-    define("MAILQUEUE_BATCH_PERIOD",600);
+# batch period is set to 600 seconds (= 10 minutes):
+define("MAILQUEUE_BATCH_PERIOD",600);
 
-    # Pause between messages (in seconds) to avoid overloading the server:
-    define('MAILQUEUE_THROTTLE',1);
+# Pause between messages (in seconds) to avoid overloading the server:
+define('MAILQUEUE_THROTTLE',1);
     </pre>
 
     <p>If you are manually processing the message queue -i.e. by using your browser- you may want to consider settings that use a small batches and a short batch period, like this one which will send 10 messages and then reload the browser to send the next 10. However, this will not restrict the sending to any limits, so there's a good chance you will go over the limits of your ISP.</p>
@@ -91,48 +91,48 @@
   </h5>
 
     <pre>
-    # batch processing
-    # batch processing
-    # if you are on a shared host, it will probably be appreciated if you don't send
-    # out loads of emails in one go. To do this, you can configure batch processing.
-    # Please note, the following two values can be overridden by your ISP by using
-    # a server wide configuration. So if you notice these values to be different
-    # in reality, that may be the case
+# batch processing
+# batch processing
+# if you are on a shared host, it will probably be appreciated if you don't send
+# out loads of emails in one go. To do this, you can configure batch processing.
+# Please note, the following two values can be overridden by your ISP by using
+# a server wide configuration. So if you notice these values to be different
+# in reality, that may be the case
 
-    ## if you send the queue using your browser, you may want to consider settings like this
-    ## which will send 10 messages and then reload the browser to send the next 10. However, this
-    ## will not restrict the sending to any limits, so there's a good chance you will
-    ## go over the limits of your ISP
-    # define("MAILQUEUE_BATCH_SIZE",10);
-    # define("MAILQUEUE_BATCH_PERIOD",1);
+## if you send the queue using your browser, you may want to consider settings like this
+## which will send 10 messages and then reload the browser to send the next 10. However, this
+## will not restrict the sending to any limits, so there's a good chance you will
+## go over the limits of your ISP
+# define("MAILQUEUE_BATCH_SIZE",10);
+# define("MAILQUEUE_BATCH_PERIOD",1);
 
-    ## if you send the queue using commandline, you can set it to something that complies with the
-    ## limits of your ISP, eg 300 messages an hour would be
-    # define("MAILQUEUE_BATCH_SIZE",300);
-    # define("MAILQUEUE_BATCH_PERIOD",3600);
-    # and then you need to set the cron to run every 5 minutes
+## if you send the queue using commandline, you can set it to something that complies with the
+## limits of your ISP, eg 300 messages an hour would be
+# define("MAILQUEUE_BATCH_SIZE",300);
+# define("MAILQUEUE_BATCH_PERIOD",3600);
+# and then you need to set the cron to run every 5 minutes
 
-    # define the amount of emails you want to send per period. If 0, batch processing
-    # is disabled and messages are sent out as fast as possible
-    define("MAILQUEUE_BATCH_SIZE",0);
+# define the amount of emails you want to send per period. If 0, batch processing
+# is disabled and messages are sent out as fast as possible
+define("MAILQUEUE_BATCH_SIZE",0);
 
-    # define the length of one batch processing period, in seconds (3600 is an hour)
-    # Please note: this setting has two consequences:
-    # 1. it will enforce that the amount of emails sent in the period identified here does not exceed the amount
-    #  set in MAILQUEUE_BATCH_SIZE
-    # 2. there will be a delay of MAILQUEUE_BATCH_PERIOD when running the queue.
-    #
-    # number 1 is mostly when using commandline queue processing (strongly recommended)
-    # number 2 is when using browser queue processing. The browser will reload to send the next
-    # batch after the amount of seconds set here
+# define the length of one batch processing period, in seconds (3600 is an hour)
+# Please note: this setting has two consequences:
+# 1. it will enforce that the amount of emails sent in the period identified here does not exceed the amount
+#  set in MAILQUEUE_BATCH_SIZE
+# 2. there will be a delay of MAILQUEUE_BATCH_PERIOD when running the queue.
+#
+# number 1 is mostly when using commandline queue processing (strongly recommended)
+# number 2 is when using browser queue processing. The browser will reload to send the next
+# batch after the amount of seconds set here
 
-    define("MAILQUEUE_BATCH_PERIOD",100);
+define("MAILQUEUE_BATCH_PERIOD",100);
 
-    # to avoid overloading the server that sends your email, you can add a little delay
-    # between messages that will spread the load of sending
-    # you will need to find a good value for your own server
-    # value is in seconds (or you can play with the autothrottle below)
-    define('MAILQUEUE_THROTTLE',0);
+# to avoid overloading the server that sends your email, you can add a little delay
+# between messages that will spread the load of sending
+# you will need to find a good value for your own server
+# value is in seconds (or you can play with the autothrottle below)
+define('MAILQUEUE_THROTTLE',0);
     </pre>
 
 <h4 id="hn-Experimental-settings-auto-throttle-and-domain-throttle">
@@ -140,27 +140,27 @@
 </h4>
 
     <pre>
-     # Mailqueue autothrottle. This will try to automatically change the delay
-    # between messages to make sure that the MAILQUEUE_BATCH_SIZE (above) is spread evently over
-    # MAILQUEUE_BATCH_PERIOD, instead of firing the Batch in the first few minutes of the period
-    # and then waiting for the next period. This only works with mailqueue_throttle off
-    # it still needs tweaking, so send your feedback to mantis.tincan.co.uk if you find
-    # any issues with it
-    define('MAILQUEUE_AUTOTHROTTLE',0);
+ # Mailqueue autothrottle. This will try to automatically change the delay
+# between messages to make sure that the MAILQUEUE_BATCH_SIZE (above) is spread evently over
+# MAILQUEUE_BATCH_PERIOD, instead of firing the Batch in the first few minutes of the period
+# and then waiting for the next period. This only works with mailqueue_throttle off
+# it still needs tweaking, so send your feedback to mantis.tincan.co.uk if you find
+# any issues with it
+define('MAILQUEUE_AUTOTHROTTLE',0);
 
-    # Domain Throttling
-    # You can activate domain throttling, by setting USE_DOMAIN_THROTTLE to 1
-    # define the maximum amount of emails you want to allow sending to any domain and the number
-    # of seconds for that amount. This will make sure you don't send too many emails to one domain
-    # which may cause blacklisting. Particularly the big ones are tricky about this.
-    # it may cause a dramatic increase in the amount of time to send a message, depending on how
-    # many users you have that have the same domain (eg hotmail.com)
-    # if too many failures for throttling occur, the send process will automatically add an extra
-    # delay to try to improve that. The example sends 1 message every 2 minutes.
+# Domain Throttling
+# You can activate domain throttling, by setting USE_DOMAIN_THROTTLE to 1
+# define the maximum amount of emails you want to allow sending to any domain and the number
+# of seconds for that amount. This will make sure you don't send too many emails to one domain
+# which may cause blacklisting. Particularly the big ones are tricky about this.
+# it may cause a dramatic increase in the amount of time to send a message, depending on how
+# many users you have that have the same domain (eg hotmail.com)
+# if too many failures for throttling occur, the send process will automatically add an extra
+# delay to try to improve that. The example sends 1 message every 2 minutes.
 
-    define('USE_DOMAIN_THROTTLE',0);
-    define('DOMAIN_BATCH_SIZE',1);
-    define('DOMAIN_BATCH_PERIOD',120);
+define('USE_DOMAIN_THROTTLE',0);
+define('DOMAIN_BATCH_SIZE',1);
+define('DOMAIN_BATCH_PERIOD',120);
     </pre>
 
 <h4 id="hn-Tips-tricks-from-the-forum">
