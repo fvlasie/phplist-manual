@@ -195,38 +195,38 @@
         </navLabel>
         <content src="ch034_upgrade_using_automatic_updater.xhtml"/>
       </navPoint>
-      <navPoint id="chapter29" playOrder="25">
+      <navPoint id="chapter29" playOrder="26">
         <navLabel>
           <text>Installing using an auto-installer</text>
         </navLabel>
         <content src="ch029_instaling-using-an-auto-installer.xhtml"/>
       </navPoint>
-      <navPoint id="chapter30" playOrder="26">
+      <navPoint id="chapter30" playOrder="27">
         <navLabel>
           <text>Configuration; verify settings</text>
         </navLabel>
         <content src="ch030_configuration.xhtml"/>
       </navPoint>
-      <navPoint id="chapter31" playOrder="27">
+      <navPoint id="chapter31" playOrder="28">
         <navLabel>
           <text>Upgrading manually</text>
         </navLabel>
         <content src="ch031_upgrading.xhtml"/>
       </navPoint>
-      <navPoint id="chapter32" playOrder="28">
+      <navPoint id="chapter32" playOrder="29">
         <navLabel>
           <text>Upgrading an auto-installed installation</text>
         </navLabel>
         <content src="ch032_upgrading-an-auto-installed-installation.xhtml"/>
       </navPoint>
-      <navPoint id="chapter33" playOrder="29">
+      <navPoint id="chapter33" playOrder="30">
         <navLabel>
           <text>Common Installation Errors</text>
         </navLabel>
         <content src="ch033_common-installation-errors.xhtml"/>
       </navPoint>
     </navPoint>
-    <navPoint id="chapter34" playOrder="30">
+    <navPoint id="chapter34" playOrder="31">
       <navLabel>
         <text>Sending</text>
       </navLabel>
@@ -237,85 +237,85 @@
         </navLabel>
         <content src="ch035_methods-of-sending-browser-cron-command-line.xhtml"/>
       </navPoint>
-      <navPoint id="chapter36" playOrder="31">
+      <navPoint id="chapter36" playOrder="32">
         <navLabel>
           <text>Setting up your Cron</text>
         </navLabel>
         <content src="ch036_setting-up-your-cron.xhtml"/>
       </navPoint>
-      <navPoint id="chapter37" playOrder="32">
+      <navPoint id="chapter37" playOrder="33">
         <navLabel>
           <text>Scheduling</text>
         </navLabel>
         <content src="ch037_scheduling.xhtml"/>
       </navPoint>
-      <navPoint id="chapter38" playOrder="33">
+      <navPoint id="chapter38" playOrder="34">
         <navLabel>
           <text>Sending a web-page</text>
         </navLabel>
         <content src="ch038_sending-a-web-page.xhtml"/>
       </navPoint>
-      <navPoint id="chapter39" playOrder="34">
+      <navPoint id="chapter39" playOrder="35">
         <navLabel>
           <text>Sending plain text</text>
         </navLabel>
         <content src="ch039_sending-plain-text.xhtml"/>
       </navPoint>
-      <navPoint id="chapter40" playOrder="35">
+      <navPoint id="chapter40" playOrder="36">
         <navLabel>
           <text>Bounce Management</text>
         </navLabel>
         <content src="ch040_bounce-management.xhtml"/>
       </navPoint>
     </navPoint>
-    <navPoint id="chapter41" playOrder="36">
+    <navPoint id="chapter41" playOrder="37">
       <navLabel>
         <text>Plugins</text>
       </navLabel>
       <content src="ch042_phplist-plugins.xhtml"/>
-      <navPoint id="chapter42" playOrder="36">
+      <navPoint id="chapter42" playOrder="38">
         <navLabel>
           <text>phpList Plugins</text>
         </navLabel>
         <content src="ch042_phplist-plugins.xhtml"/>
       </navPoint>
     </navPoint>
-    <navPoint id="chapter43" playOrder="37">
+    <navPoint id="chapter43" playOrder="39">
       <navLabel>
         <text>Translations</text>
       </navLabel>
       <content src="ch044_setting-up-phplist-in-your-own-language.xhtml"/>
-      <navPoint id="chapter44" playOrder="37">
+      <navPoint id="chapter44" playOrder="40">
         <navLabel>
           <text>Setting up phpList in your own language</text>
         </navLabel>
         <content src="ch044_setting-up-phplist-in-your-own-language.xhtml"/>
       </navPoint>
     </navPoint>
-    <navPoint id="chapter50" playOrder="38">
+    <navPoint id="chapter50" playOrder="41">
       <navLabel>
         <text>Send speed</text>
       </navLabel>
       <content src="ch050_send-speed.xhtml"/>
     </navPoint>
-    <navPoint id="chapter49" playOrder="39">
+    <navPoint id="chapter49" playOrder="42">
       <navLabel>
         <text>API and Integrations</text>
       </navLabel>
       <content src="ch049_api-and-integrations.xhtml"/>
     </navPoint>
-    <navPoint id="chapter45" playOrder="40">
+    <navPoint id="chapter45" playOrder="43">
       <navLabel>
         <text>Troubleshooting</text>
       </navLabel>
       <content src="ch046_troubleshooting-techniques.xhtml"/>
-      <navPoint id="chapter46" playOrder="41">
+      <navPoint id="chapter46" playOrder="44">
         <navLabel>
           <text>Troubleshooting Techniques</text>
         </navLabel>
         <content src="ch046_troubleshooting-techniques.xhtml"/>
       </navPoint>
-      <navPoint id="chapter47" playOrder="42">
+      <navPoint id="chapter47" playOrder="45">
         <navLabel>
           <text>Glossary</text>
         </navLabel>
